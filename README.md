@@ -20,4 +20,4 @@ Twitter: [@BalestraPatrick](http://twitter.com/BalestraPatrick).
 
 ## License
 
-`ParticlesLoadingView` is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
+`CleanClosureXcode` is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
