@@ -44,7 +44,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         }
         
         // If at least a line was changed, create an array of changes and pass it to the buffer selections
-        if updatedLineIndexes.count > 0 {
+        if !updatedLineIndexes.isEmpty {
             let updatedSelections: [XCSourceTextRange] = updatedLineIndexes.map { lineIndex in
                 let lineSelection = XCSourceTextRange()
                 lineSelection.start = XCSourceTextPosition(line: lineIndex, column: 0)
@@ -53,7 +53,6 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             }
             invocation.buffer.selections.setArray(updatedSelections)
         }
-        
         completionHandler(nil)
     }
 }
