@@ -10,13 +10,13 @@ import Foundation
 import XcodeKit
 
 extension NSString {
-    // Remove the given chracters in the range from the string.
+    // Remove the given characters in the range
     func remove(characters: [Character], in range: NSRange) -> NSString {
-        var cleanedString = self
+        var cleanString = self
         for char in characters {
-            cleanedString = cleanedString.replacingOccurrences(of: String(char), with: "", options: .caseInsensitiveSearch, range: range)
+            cleanString = cleanString.replacingOccurrences(of: String(char), with: "", options: .caseInsensitiveSearch, range: range)
         }
-        return cleanedString
+        return cleanString
     }
 }
 
@@ -43,7 +43,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             }
         }
         
-        // If at least a line was changed, create an array of changes and pass it to the buffer selections.
+        // If at least a line was changed, create an array of changes and pass it to the buffer selections
         if updatedLineIndexes.count > 0 {
             let updatedSelections: [XCSourceTextRange] = updatedLineIndexes.map { lineIndex in
                 let lineSelection = XCSourceTextRange()
