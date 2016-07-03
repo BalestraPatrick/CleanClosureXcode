@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Clean Closure</string>
+	<string>Cleaner</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -34,7 +34,7 @@
 					<key>XCSourceEditorCommandClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
 					<key>XCSourceEditorCommandIdentifier</key>
-					<string>com.patrickbalestra.Demo.CleanClosure.SourceEditorCommand</string>
+					<string>com.patrickbalestra.CleanClosureSyntax.Cleaner.SourceEditorCommand</string>
 					<key>XCSourceEditorCommandName</key>
 					<string>Clean Syntax</string>
 				</dict>

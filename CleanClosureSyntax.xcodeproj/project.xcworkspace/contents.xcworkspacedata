@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/patrickbalestra/Documents/WWDC16/Demo/CleanClosure.xcodeproj">
+      location = "self:CleanClosureSyntax.xcodeproj">
    </FileRef>
 </Workspace>
