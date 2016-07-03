@@ -1,6 +1,6 @@
 ## Clean Closure - Xcode Source Editor Extension
 
-<p align="center"><img src ="demo.gif" width="600px"/></p>
+<p align="center"><img src ="result.gif" width="800px"/></p>
 
 
 Clean Closure is a simple Xcode Source Editor Extension for Xcode 8. It parses each line of a file to simplify the syntax of closures in your Swift code by removing the useless `()`.
