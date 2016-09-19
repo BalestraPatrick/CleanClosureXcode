@@ -14,7 +14,7 @@ extension NSString {
     func remove(characters: [Character], in range: NSRange) -> NSString {
         var cleanString = self
         for char in characters {
-            cleanString = cleanString.replacingOccurrences(of: String(char), with: "", options: .caseInsensitiveSearch, range: range)
+            cleanString = cleanString.replacingOccurrences(of: String(char), with: "", options: [.caseInsensitive], range: range) as NSString
         }
         return cleanString
     }
@@ -22,14 +22,14 @@ extension NSString {
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
-    func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: (NSError?) -> Void ) -> Void {
+    func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
         var updatedLineIndexes = [Int]()
         
         // Find lines that contain a closure syntax
         for lineIndex in 0 ..< invocation.buffer.lines.count {
             let line = invocation.buffer.lines[lineIndex] as! NSString
             do {
-                let regex = try RegularExpression(pattern: "\\{.*\\(.+\\).+in", options: .caseInsensitive)
+                let regex = try NSRegularExpression(pattern: "\\{.*\\(.+\\).+in", options: .caseInsensitive)
                 let range = NSRange(0 ..< line.length)
                 let results = regex.matches(in: line as String, options: .reportProgress, range: range)
                 // When a closure is found, clean up its syntax

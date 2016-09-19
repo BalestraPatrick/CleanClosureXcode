@@ -5,10 +5,10 @@
 
 Clean Closure is a simple Xcode Source Editor Extension for Xcode 8. It parses each line of a file to simplify the syntax of closures in your Swift code by removing the useless `()`.
 
-The code is pretty straighforward and it uses a `RegularExpression` to find out where a closure is by looking for `(`,  `)` and  `in` characters.
+The code is pretty straighforward and it uses a `NSRegularExpression` to find out where a closure is by looking for `(`,  `)` and  `in` characters.
 
 ## Requirements
-Xcode 8.0 🛠
+🛠 Xcode 8.0 and Swift 3.0.
 
 Please run `sudo /usr/libexec/xpccachectl` and restart your Mac before running the extension if you are on macOS 10.11 El Capitan.
 
