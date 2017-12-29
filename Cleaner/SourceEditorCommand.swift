@@ -9,12 +9,12 @@
 import Foundation
 import XcodeKit
 
-extension NSString {
+extension String {
     // Remove the given characters in the range
-    func remove(characters: [Character], in range: NSRange) -> NSString {
+    func remove(characters: [Character], in range: NSRange) -> String {
         var cleanString = self
         for char in characters {
-            cleanString = cleanString.replacingOccurrences(of: String(char), with: "", options: [.caseInsensitive], range: range) as NSString
+            cleanString = cleanString.replacingOccurrences(of: String(char), with: "", options: [.caseInsensitive], range: range as? Range) as String
         }
         return cleanString
     }
@@ -27,10 +27,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         
         // Find lines that contain a closure syntax
         for lineIndex in 0 ..< invocation.buffer.lines.count {
-            let line = invocation.buffer.lines[lineIndex] as! NSString
+            let line = invocation.buffer.lines[lineIndex] as! String
             do {
                 let regex = try NSRegularExpression(pattern: "\\{.*\\(.+\\).+in", options: .caseInsensitive)
-                let range = NSRange(0 ..< line.length)
+                let range = NSRange(0 ..< line.count)
                 let results = regex.matches(in: line as String, options: .reportProgress, range: range)
                 // When a closure is found, clean up its syntax
                 _ = results.map { result in
@@ -39,7 +39,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                     invocation.buffer.lines[lineIndex] = cleanLine
                 }
             } catch {
-                completionHandler(error as NSError)
+                completionHandler(error as Error)
             }
         }
         
