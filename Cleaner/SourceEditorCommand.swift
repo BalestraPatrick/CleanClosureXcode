@@ -14,9 +14,22 @@ extension String {
     func remove(characters: [Character], in range: NSRange) -> String {
         var cleanString = self
         for char in characters {
-            cleanString = cleanString.replacingOccurrences(of: String(char), with: "", options: [.caseInsensitive], range: range as? Range) as String
+            cleanString = cleanString.replacingOccurrences(of: String(char), with: "", options: [.caseInsensitive], range: cleanString.range(from: range)) as String
         }
         return cleanString
+    }
+    
+    //change NSRange to Range
+    func range(from nsRange: NSRange) -> Range<String.Index>? {
+        guard
+            let from16 = utf16.index(utf16.startIndex, offsetBy: nsRange.location,
+                                     limitedBy: utf16.endIndex),
+            let to16 = utf16.index(from16, offsetBy: nsRange.length,
+                                   limitedBy: utf16.endIndex),
+            let from = String.Index(from16, within: self),
+            let to = String.Index(to16, within: self)
+            else { return nil }
+        return from ..< to
     }
 }
 
